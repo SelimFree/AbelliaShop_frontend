@@ -169,7 +169,7 @@ const Products = ({search}) => {
                         alt=""
                     />
                 </div>
-                <List checkBoxes={checkBoxes} radioButtons={radioButtons} />
+                <List checkBoxes={checkBoxes} radioButtons={radioButtons} search = {search} />
             </div>
         </div>
     );
