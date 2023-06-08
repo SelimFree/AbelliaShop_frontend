@@ -43,7 +43,7 @@ const Cart = ({ setisOpen }) => {
                                         ? item?.description_eng
                                         : state.lang == "RUS"
                                         ? item?.description_rus
-                                        : data?.description_tkm
+                                        : item?.description_tkm
                                     )?.substring(0, 100) || ""
                                 }...`}</div>
                                 <div className="price">{`${item?.quantity} x ${item?.price} TMT`}</div>

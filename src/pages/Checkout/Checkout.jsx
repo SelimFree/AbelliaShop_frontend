@@ -16,6 +16,8 @@ import useGlobalState from "../../hooks/useGlobalState";
 import { makeRequest } from "../../makeRequest";
 import Modal from "../../components/Modal/Modal";
 import { resetCart } from "../../redux/cartReducer";
+import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
     const [state] = useGlobalState();
@@ -32,10 +34,13 @@ const Checkout = () => {
     });
     const products = useSelector((state) => state.products);
     const [activeStep, setActiveStep] = useState(0);
+    const navigator = useNavigate();
 
     const dispatch = useDispatch();
     const steps = [textContent().step_1, textContent().step_2];
     let total = 0;
+    const fillDataToast = textContent().fill_data_toast;
+    const emptyCartToast = textContent().empty_cart_toast;
 
     const handleCheckout = async () => {
         try {
@@ -68,11 +73,19 @@ const Checkout = () => {
                 )
             ) {
                 setFormFilled(false);
+                toast.error(fillDataToast)
                 return;
             }
         }
         if (activeStep >= steps.length - 1) {
-            handleCheckout();
+            if (products.length == 0) {
+                toast.error(emptyCartToast)
+                setInterval(() => {
+                    navigator("/");
+                }, 2000);
+            } else {
+                handleCheckout();
+            }
         }
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
     };
@@ -86,7 +99,7 @@ const Checkout = () => {
         }
     };
 
-    return products.length ? (
+    return !requestStatus ? (
         <div className="checkout">
             <Box sx={{ width: "100%" }}>
                 <Stepper activeStep={activeStep}>
@@ -281,9 +294,10 @@ const Checkout = () => {
                     </Box>
                 </Fragment>
             </Box>
+            <Toaster position="bottom-center" reverseOrder={true} />
         </div>
     ) : (
-        <Modal requestStatus={requestStatus} />
+        <Modal requestStatus={requestStatus} setRequestStatus={setRequestStatus} />
     );
 };
 export default Checkout;

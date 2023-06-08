@@ -6,6 +6,8 @@ const testContent = () => {
     return {
         step_1: (state.lang == "ENG" ? "Enter user data" : (state.lang == "RUS" ? "Ввод данных" : "Enter user data")),
         step_2: (state.lang == "ENG" ? "Check your products" : (state.lang == "RUS" ? "Проверка товаров" : "Check your products")),
+        fill_data_toast: (state.lang == "ENG" ? "Fill the fields properly" : (state.lang == "RUS" ? "Заполните поля" : "Fill the fields properly")),
+        empty_cart_toast: (state.lang == "ENG" ? "Your cart is empty" : (state.lang == "RUS" ? "Ваша корзина пуста" : "Your cart is empty")),
         name: (state.lang == "ENG" ? "Name" : (state.lang == "RUS" ? "Имя" : "Name")),
         surname: (state.lang == "ENG" ? "Surname" : (state.lang == "RUS" ? "Фамилия" : "Surname")),
         tel_number: (state.lang == "ENG" ? "Moblie" : (state.lang == "RUS" ? "Телефон" : "Moblie")),
