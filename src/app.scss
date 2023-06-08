@@ -1,0 +1,53 @@
+* {
+  scrollbar-width: 5px;
+  scrollbar-color: rgba(40,121,254, 0.7) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(40,121,254, 0.7);
+  border-radius: 20px;
+  border: transparent;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+.app {
+    font-family: 'Source Sans Pro', sans-serif;
+    .link {
+        color: inherit;
+        text-decoration: none;
+    }
+}
+
+.Loader {
+    .value{
+        animation-duration: 2.2s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+        animation-name: shimmer;
+        animation-timing-function: linear;
+        background: linear-gradient(to right, #F6F6F6 8%, #F0F0F0 18%, #F6F6F6 33%);
+        background-size: 1200px 100%;
+      }
+      
+      @keyframes shimmer {
+        0% {
+          background-position: -1200px 0;
+        }
+        100% {
+          background-position: 1200px 0;
+        }
+    }
+}

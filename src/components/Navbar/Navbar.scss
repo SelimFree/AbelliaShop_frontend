@@ -1,0 +1,167 @@
+.navbar {
+    width: 100vw;
+    height: 80px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: #fff;
+    .wrapper {
+        padding: 20px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-transform: capitalize;
+
+        .item {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+        }
+
+        .dropdown {
+            position: relative;
+            z-index: 3;
+            user-select: none;
+            .dropdown-btn { 
+                padding: 5px 10px;
+                background-color: #fff;
+                box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.06);
+                font-weight: bold;
+                color: #333;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                cursor: pointer;
+            }
+
+            .dropdown-content {
+                box-sizing: border-box;
+                position: absolute;
+                top: 110%;
+                left: 0;
+                padding: 5px;
+                background-color: #fff;
+                box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+                font-weight: 600;
+                color: #333;
+                width: 100%;
+
+                .item {
+                    padding: 5px 10px;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                }
+                
+                .item:hover {
+                    background-color: #f4f4f4;
+                }
+
+
+            }
+
+
+        }
+
+        .left {
+            width: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 25px;
+
+        }
+
+        .center {
+            font-size: 30px;
+            letter-spacing: 2px;
+        }
+
+        .right {
+            width: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 25px;
+        }
+
+        .icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #777;
+            cursor: pointer;
+
+            .cartIcon {
+                position: relative;
+                display: flex;
+                align-items: center;
+                font-size: 30px;
+    
+                span {
+                    font-size: 12px;
+                    width: 20px;
+                    height: 20px;
+                    background-color: #2879fe;
+                    border-radius: 50%;
+                    color: white;
+                    position: absolute;
+                    right: -40%;
+                    top: -40%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+
+            .search {
+                display: inline-block;
+                position: relative;
+
+                input {
+                    box-sizing: border-box;
+                    color: #000;
+                    font-size: 16px;
+                    background: transparent;
+                    width: 25px;
+                    height: 25px;
+                    padding: 5px 10px;
+                    border: solid 3px gray;
+                    outline: none;
+                    border-radius: 35px;
+                    transition: width 0.5s;
+                }
+
+                input::placeholder {
+                    color: #efefef;
+                    opacity: 0;
+                    transition: opacity 150ms ease-out;
+                }
+                  
+                input:focus::placeholder {
+                    opacity: 1;
+                }
+                  
+                input:focus,
+                input:not(:placeholder-shown) {
+                    width: 200px;
+                }
+            }
+              
+            .search:after {
+                content: "";
+                background: gray;
+                width: 3px;
+                height: 10px;
+                position: absolute;
+                top: 20px;
+                right: 0px;
+                transform: rotate(135deg);
+            }
+        }
+
+    }
+}

@@ -1,0 +1,25 @@
+.social {
+    width: 100vw;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+    align-items: center;
+    background-color: #2879fe;
+
+    .left {
+        color: #fff;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .right {
+        color: #fff !important;
+        font-size: 22px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+    }
+}
