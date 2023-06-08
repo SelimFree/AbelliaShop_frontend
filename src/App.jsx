@@ -20,7 +20,7 @@ const Layout = () => {
 };
 
 const defaultGlobalState = {
-    lang: "ENG",
+    lang: "RUS",
     search: "",
 };
 
