@@ -12,7 +12,7 @@ import { useRef, useState } from "react";
 import List from "../../components/List/List";
 import { useParams } from "react-router-dom";
 import useGlobalState from "../../hooks/useGlobalState";
-const Products = () => {
+const Products = ({search}) => {
     const param = useParams().params;
     let paramFilter;
     let paramSort;
@@ -63,9 +63,9 @@ const Products = () => {
         <div className="products Loader">
             {!loadingCategories ? (
                 <div className="left">
-                    {state.search && (
+                    {search && (
                         <div className="search">
-                            {`${textContent().search} "${state.search}"`}
+                            {`${textContent().search} "${search}"`}
                         </div>
                     )}
 

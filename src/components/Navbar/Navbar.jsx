@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import useGlobalState from "../../hooks/useGlobalState";
 import testContent from "./TextContent";
 import Cart from "../Cart/Cart";
-const Navbar = () => {
+const Navbar = ({setSearch}) => {
     // Language selector
     const [isActive, setIsActive] = useState(false);
     const [isOpen, setisOpen] = useState(false);
@@ -21,7 +21,7 @@ const Navbar = () => {
         event.preventDefault();
         const userInput = event.target.firstElementChild.value;
         event.target.firstElementChild.value = "";
-        dispatch({ search: userInput });
+        setSearch(userInput);
         navigator("/products");
     };
     return (

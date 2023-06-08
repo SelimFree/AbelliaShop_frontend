@@ -6,13 +6,13 @@ import Products from "./pages/Products/Products";
 import Product from "./pages/Product/Product";
 import Checkout from "./pages/Checkout/Checkout";
 import "./app.scss";
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
 
-const Layout = () => {
-
+const Layout = ({setSearch}) => {
+    
     return (
         <div className="app">
-            <Navbar/>
+            <Navbar setSearch = {setSearch}/>
             <Outlet />
             <Footer/>
         </div>
@@ -42,23 +42,23 @@ const GlobalStateProvider = ({ children }) => {
 };
 
 function App() {
-
+    const [search, setSearch] = useState("");
     const router = createBrowserRouter([
         {
             path: "/",
-            element: <Layout/>,
+            element: <Layout setSearch = {setSearch} />,
             children: [
                 {
                     path: "/",
-                    element: <Home/>,
+                    element: <Home setSearch = {setSearch}/>,
                 },
                 {
                     path: "/products",
-                    element: <Products/>,
+                    element: <Products search = {search}/>,
                 },
                 {
                     path: "/products/:params",
-                    element: <Products/>,
+                    element: <Products search = {search}/>,
                 },
                 {
                     path: "/product/:id",
