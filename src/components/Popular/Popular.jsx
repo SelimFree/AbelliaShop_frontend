@@ -9,10 +9,7 @@ const Popular = () => {
     );
     return (
         <div className="popular">
-            <div className="top">
-                <h1>{textContent().title}</h1>
-                <span>{textContent().popularText}</span>
-            </div>
+            <h1>{textContent().title}</h1>
             <div className="bottom Loader">
                 {!loading ? (
                     data?.map((item) => (

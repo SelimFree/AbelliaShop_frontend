@@ -8,6 +8,7 @@ const testContent = () => {
         body: (state.lang == "ENG" ? "body" : (state.lang == "RUS" ? "тело" : "body")),
         accessories: (state.lang == "ENG" ? "accessories" : (state.lang == "RUS" ? "аксессуары" : "accessories")),
         sale: (state.lang == "ENG" ? "sale" : (state.lang == "RUS" ? "распродажа" : "sale")),
+        title: (state.lang == "ENG" ? "categories" : (state.lang == "RUS" ? "Категории" : "categories")),
     }
 }
 

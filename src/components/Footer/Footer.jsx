@@ -24,11 +24,11 @@ const Footer = () => {
                         <span>{testContent().compare}</span>
                         <span>{testContent().cookies}</span>
                     </div>
-                    <div className="item">
+                    <div className="item responsive">
                         <h1>{testContent().aboutTitle}</h1>
                         <span>{testContent().about}</span>
                     </div>
-                    <div className="item">
+                    <div className="item responsive">
                         <h1>{testContent().contactTitle}</h1>
                         <span>{testContent().contact}</span>
                     </div>
@@ -40,7 +40,7 @@ const Footer = () => {
                             {testContent().copyright}
                         </span>
                     </div>
-                    <div className="right"></div>
+                    <div className="right responsive"></div>
                 </div>
             </div>
         </div>

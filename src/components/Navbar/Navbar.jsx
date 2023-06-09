@@ -1,6 +1,8 @@
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.scss";
 import { useState } from "react";
@@ -13,6 +15,7 @@ const Navbar = ({setSearch}) => {
     const [isActive, setIsActive] = useState(false);
     const [isOpen, setisOpen] = useState(false);
     const options = ["ENG", "RUS", "TKM"];
+    const [burgerOpen, setBurgerOpen] = useState(false)
     const navigator = useNavigate();
     const cartItems = useSelector((state) => state.products.length);
     const [state, dispatch] = useGlobalState();
@@ -55,22 +58,22 @@ const Navbar = ({setSearch}) => {
                             )}
                         </div>
                     </div>
-                    <div className="item">
+                    <div className="item responsive">
                         <Link className="link" to="/products/filter=1">
                             {testContent().skincare}
                         </Link>
                     </div>
-                    <div className="item">
+                    <div className="item responsive">
                         <Link className="link" to="/products/filter=2">
                             {testContent().haircare}
                         </Link>
                     </div>
-                    <div className="item">
+                    <div className="item responsive">
                         <Link className="link" to="/products/filter=3">
                             {testContent().body}
                         </Link>
                     </div>
-                    <div className="item">
+                    <div className="item responsive">
                         <Link className="link" to="/products/filter=4">
                             {testContent().accessories}
                         </Link>
@@ -82,23 +85,23 @@ const Navbar = ({setSearch}) => {
                     </Link>
                 </div>
                 <div className="right">
-                    <div className="item">
+                    <div className="item responsive">
                         <Link className="link" to="/products">
                             {testContent().about}
                         </Link>
                     </div>
-                    <div className="item">
+                    <div className="item responsive">
                         <Link className="link" to="/products">
                             {testContent().contacts}
                         </Link>
                     </div>
-                    <div className="item">
+                    <div className="item responsive">
                         <Link className="link" to="/products">
                             {testContent().all}
                         </Link>
                     </div>
                     <div className="icons">
-                        <form className="search" onSubmit={handleSearch}>
+                        <form className="search responsive" onSubmit={handleSearch}>
                             <input
                                 required
                                 type="text"
@@ -112,6 +115,54 @@ const Navbar = ({setSearch}) => {
                         >
                             <ShoppingCartOutlinedIcon fontSize="30px" />
                             <span>{cartItems}</span>
+                        </div>
+                        <MenuOutlinedIcon className="burger" onClick={() => setBurgerOpen(true)}/>
+                    </div>
+                </div>
+                <div className={"burger-container" + (burgerOpen ? " burger-opened" : "")}>
+                    <div className="burger-wrapper">
+                        <div className="top">
+                            <div className="search">
+                                <input type="text" className="search__input" id="name" placeholder="Products..." />
+                            </div>
+                            <CloseOutlinedIcon className="close-btn" onClick={() => setBurgerOpen(false)}/>
+                        </div>
+                        <div className="elements">
+                            <div className="item">
+                                <Link className="link" to="/products/filter=1">
+                                    {testContent().skincare}
+                                </Link>
+                            </div>
+                            <div className="item">
+                                <Link className="link" to="/products/filter=2">
+                                    {testContent().haircare}
+                                </Link>
+                            </div>
+                            <div className="item">
+                                <Link className="link" to="/products/filter=3">
+                                    {testContent().body}
+                                </Link>
+                            </div>
+                            <div className="item">
+                                <Link className="link" to="/products/filter=4">
+                                    {testContent().accessories}
+                                </Link>
+                            </div>
+                            <div className="item">
+                                <Link className="link" to="/">
+                                    {testContent().about}
+                                </Link>
+                            </div>
+                            <div className="item">
+                                <Link className="link" to="/">
+                                    {testContent().contacts}
+                                </Link>
+                            </div>
+                            <div className="item">
+                                <Link className="link" to="/products">
+                                    {testContent().all}
+                                </Link>
+                            </div>  
                         </div>
                     </div>
                 </div>

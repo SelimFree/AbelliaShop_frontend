@@ -7,6 +7,9 @@
     gap: 10px;
     overflow: hidden;
     position: relative;
+    @media (max-width: 768px) {
+        align-items: center;
+    }
 
     .new {
         position: absolute;
@@ -34,6 +37,9 @@
 
     .image:hover {
         transform: translateX(-50%);
+        @media (max-width: 768px) {
+            transform: none;
+        }
     }
 
     h2 {
@@ -41,6 +47,9 @@
         font-size: 16px;
         font-weight: 600;
         height: 60px;
+        @media (max-width: 768px) {
+            text-align: center;
+        }
     }
 
     .prices {
@@ -51,11 +60,18 @@
             margin: 0;
             font-size: 18px;
             font-weight: 400;
+            @media (max-width: 768px) {
+                font-size: 24px;
+                
+            }
         }
 
         .old {
             text-decoration: line-through;
             color: gray;
+            @media (max-width: 768px) {
+                font-size: 24px;
+            }
         }
     }
 }

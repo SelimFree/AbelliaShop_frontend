@@ -8,6 +8,7 @@ const Home = ({setSearch}) => {
         <div className="home">
             <Slider/>
             <Popular/>
+            <hr className="rounded"></hr>
             <Categories/>
         </div>
     )
