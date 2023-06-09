@@ -8,7 +8,7 @@ import textContent from "./TextContent";
 import Loader from "./Loader";
 import useFetch from "../../hooks/useFetch";
 import "./Products.scss";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import List from "../../components/List/List";
 import { useParams } from "react-router-dom";
 import useGlobalState from "../../hooks/useGlobalState";
@@ -35,6 +35,12 @@ const Products = ({search}) => {
     const [radioButtons, setradioButtons] = useState(
         paramSort ? `sort[0]=${paramSort}` : "sort[0]=price"
     );
+
+    useEffect(() => {
+        setCheckBoxes(paramFilter ? [`filters[category][id][$in][0]=${paramFilter}`] : []);
+        setradioButtons(paramSort ? `sort[0]=${paramSort}` : "sort[0]=price");
+    }, [paramFilter, paramSort])
+    
 
     const generateUrlFilter = () => {
         let filters = [];

@@ -51,7 +51,11 @@
             gap: 10px;
             .items {
                 width: 70%;
+                height: 100%;
                 overflow-y: scroll;
+                display: flex;
+                align-items: flex-start;
+
 
                 .item {
                     width: 100%;

@@ -17,7 +17,6 @@ const Card = ({ item }) => {
                             import.meta.env.VITE_APP_UPLOAD_URL +
                             item?.attributes?.img1?.data?.attributes?.url
                         }
-                        alt=""
                     />
                     <img
                         className="secondImg"
@@ -25,7 +24,6 @@ const Card = ({ item }) => {
                             import.meta.env.VITE_APP_UPLOAD_URL +
                             item?.attributes?.img2?.data?.attributes?.url
                         }
-                        alt=""
                     />
                 </div>
                 <h2>
