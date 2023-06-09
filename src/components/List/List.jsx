@@ -26,7 +26,8 @@ const List = ({ checkBoxes, radioButtons, search }) => {
                 : "");
         return url;
     };
-    const [data, loading, error] = useFetch(generateUrl());
+    const url = generateUrl()
+    const [data, loading, error] = useFetch(url);
 
     const showMore = () => {
         setPage(page + 1);
