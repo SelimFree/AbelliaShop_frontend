@@ -3,39 +3,102 @@
     height: fit-content;
     margin-bottom: 50px;
     display: flex;
-    align-items: self-start;
-    gap: 10px;
+    align-items: flex-start;
+    justify-content: space-between;
+    @media (max-width: 768px) {
+        display: block;
+    }
 
-    .left {
+    .wrapper {
         height: 100%;
-        width: 20%;
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-        gap: 20px;
-        padding-left: 40px;
         position: sticky;
         z-index: 2;
-        background-color: #fff;
         top: 11%;
         left: 0;
-        .categories {
+        pointer-events: none;
+        @media (max-width: 768px) {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            pointer-events: all;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: 0.4s ease;
+        }
+        .left {
             height: 100%;
-            margin: 0;
-            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            gap: 20px;
+            padding-left: 40px;
+            pointer-events: all;
+            background-color: #fff;
+            .categories {
+                height: 100%;
+                margin: 0;
+                height: fit-content;
+            }
+    
+            .sorting {
+                height: 100%;
+            }
+            .search {
+                font-size: 26px;
+                font-weight: 600;
+                color: #000;
+                margin-bottom: 30px;
+            }
+    
+            @media (max-width: 768px) {
+                background-color: #fff;
+                height: fit-content;
+                padding-top: 20px;
+            }
+    
         }
-
-        .sorting {
-            height: 100%;
-        }
-        .search {
-            font-size: 26px;
-            font-weight: 600;
-            color: #000;
-            margin-bottom: 30px;
-        }
-
     }
+
+    .wrapper-open {
+        opacity: 1;
+        transform: translateY(0);
+        background-color: rgba(0,0,0,.65);
+    }
+
+    .filter-btn-wrapper{
+        display: none;
+        @media (max-width: 768px) {
+            box-sizing: border-box;
+            display: block;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100vw;
+            padding: 5px;
+            z-index: 5;
+        }
+
+        button {
+            width: 100%;
+            height: 40px;
+            color: #fff;
+            background-color: #2879fe;
+            border: none;
+            border-radius: 5px;
+        }
+    }
+
+
 
     .filterItem {
         min-height: 200px;
@@ -45,11 +108,19 @@
             font-weight: 600px;
             margin: 0;
             margin-bottom: 10px;
+            text-align: left;
+            @media (max-width: 960px) {
+                font-size: 16px;
+            }
         }
 
         span {
             font-size: 12px;
             font-weight: 600 !important; 
+
+            @media (max-width: 960px) {
+                font-size: 10px;
+            }
         }
     }
 
@@ -59,10 +130,15 @@
         display: flex;
         flex-direction: column;
 
+        @media (max-width: 768px) {
+            width: 100%;
+        }
+
         .banner {
             width: 100%;
             height: 200px;
             margin-bottom: 30px;
+
 
             img {
                 width: 100%;

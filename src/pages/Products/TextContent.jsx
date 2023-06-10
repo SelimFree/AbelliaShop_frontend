@@ -4,6 +4,7 @@ const testContent = () => {
     return {
         categories: (state.lang == "ENG" ? "Product Categories" : (state.lang == "RUS" ? "Категории" : "Product Categories")),
         sorting: (state.lang == "ENG" ? "Sorting" : (state.lang == "RUS" ? "Сортировка" : "Sorting")),
+        filters: (state.lang == "ENG" ? "Filters" : (state.lang == "RUS" ? "Фильтры" : "Filters")),
         price_asc: (state.lang == "ENG" ? "Lowest price first" : (state.lang == "RUS" ? "Сначала дешевые" : "Lowest price first")),
         price_dec: (state.lang == "ENG" ? "Highest price first" : (state.lang == "RUS" ? "Сначала дорогие" : "Highest price first")),
         new: (state.lang == "ENG" ? "New first" : (state.lang == "RUS" ? "Сначала новые" : "New first")),

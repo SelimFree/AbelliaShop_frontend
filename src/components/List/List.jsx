@@ -12,7 +12,7 @@ const List = ({ checkBoxes, radioButtons, search }) => {
     const [page, setPage] = useState(1);
     const generateUrl = () => {
         let url =
-            `/products?pagination[pageSize]=${page * pageSize}&populate=*` +
+            `/products?pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=*` +
             (checkBoxes.length ? `&${checkBoxes.join("&")}` : "") +
             (radioButtons ? `&${radioButtons}` : "") +
             (search
@@ -29,6 +29,7 @@ const List = ({ checkBoxes, radioButtons, search }) => {
     const url = generateUrl()
     const [data, loading, error] = useFetch(url);
 
+    console.log(data);
     const showMore = () => {
         setPage(page + 1);
     };

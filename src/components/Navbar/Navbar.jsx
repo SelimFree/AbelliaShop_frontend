@@ -127,7 +127,7 @@ const Navbar = ({setSearch}) => {
                             </div>
                             <CloseOutlinedIcon className="close-btn" onClick={() => setBurgerOpen(false)}/>
                         </div>
-                        <div className="elements">
+                        <div className="elements" onClick={() => setBurgerOpen(false)}>
                             <div className="item">
                                 <Link className="link" to="/products/filter=1">
                                     {testContent().skincare}

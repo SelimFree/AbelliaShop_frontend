@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { makeRequest } from "../makeRequest";
-const useFetch = (url) => {
-    const [data, setData] = useState(null);
+const useFetch = (url, selectOne) => {
+    const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     useEffect(() => {
@@ -9,7 +9,11 @@ const useFetch = (url) => {
             try {
                 setLoading(true);
                 const res = await makeRequest.get(url);
-                setData(res.data.data);
+                if (selectOne) {
+                    setData([...data, res.data.data]);
+                } else {
+                    setData([...data, ...res.data.data]);
+                }
             } catch (error) {
                 setError(true);
             }

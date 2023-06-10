@@ -36,6 +36,8 @@ const Products = ({search}) => {
         paramSort ? `sort[0]=${paramSort}` : "sort[0]=price"
     );
 
+    const [filtersOpen, setFiltersOpen] = useState(false)
+
     useEffect(() => {
         setCheckBoxes(paramFilter ? [`filters[category][id][$in][0]=${paramFilter}`] : []);
         setradioButtons(paramSort ? `sort[0]=${paramSort}` : "sort[0]=price");
@@ -68,100 +70,102 @@ const Products = ({search}) => {
     return (
         <div className="products Loader">
             {!loadingCategories ? (
-                <div className="left">
-                    {search && (
-                        <div className="search">
-                            {`${textContent().search} "${search}"`}
-                        </div>
-                    )}
+                <div className={"wrapper" + (filtersOpen ? " wrapper-open" : "")} onClick={() => setFiltersOpen(false)}>
+                    <div className="left">
+                        {search && (
+                            <div className="search">
+                                {`${textContent().search} "${search}"`}
+                            </div>
+                        )}
 
-                    <div className="filterItem">
-                        <h1>{textContent().categories}</h1>
-                        <div className="categories">
-                            <FormGroup ref={checkBoxesGroup}>
-                                {categories?.map((category) => (
-                                    <FormControlLabel
-                                        className="label"
-                                        control={
-                                            <Checkbox
-                                                onChange={handleCheckBoxChange}
-                                                checked={
-                                                    checkBoxes.some(
-                                                        (filter) =>
-                                                            filter.split(
-                                                                "="
-                                                            )[1] == category?.id
-                                                    )
-                                                        ? true
-                                                        : false
-                                                }
-                                            />
-                                        }
-                                        label={
-                                            state.lang == "ENG"
-                                                ? category?.attributes
-                                                      ?.title_eng
-                                                : state.lang == "RUS"
-                                                ? category?.attributes
-                                                      ?.title_rus
-                                                : category?.attributes
-                                                      ?.title_tkm
-                                        }
-                                        key={category?.id}
-                                        id={category?.id}
-                                    />
-                                ))}
-                            </FormGroup>
+                        <div className="filterItem">
+                            <h1>{textContent().categories}</h1>
+                            <div className="categories">
+                                <FormGroup ref={checkBoxesGroup}>
+                                    {categories?.map((category) => (
+                                        <FormControlLabel
+                                            className="label"
+                                            control={
+                                                <Checkbox
+                                                    onChange={handleCheckBoxChange}
+                                                    checked={
+                                                        checkBoxes.some(
+                                                            (filter) =>
+                                                                filter.split(
+                                                                    "="
+                                                                )[1] == category?.id
+                                                        )
+                                                            ? true
+                                                            : false
+                                                    }
+                                                />
+                                            }
+                                            label={
+                                                state.lang == "ENG"
+                                                    ? category?.attributes
+                                                        ?.title_eng
+                                                    : state.lang == "RUS"
+                                                    ? category?.attributes
+                                                        ?.title_rus
+                                                    : category?.attributes
+                                                        ?.title_tkm
+                                            }
+                                            key={category?.id}
+                                            id={category?.id}
+                                        />
+                                    ))}
+                                </FormGroup>
+                            </div>
                         </div>
-                    </div>
-                    <div className="filterItem">
-                        <h1>{textContent().sorting}</h1>
-                        <div className="sorting">
-                            <FormControl>
-                                <RadioGroup
-                                    aria-labelledby="demo-radio-buttons-group-label"
-                                    value={radioButtons}
-                                    name="radio-buttons-group"
-                                    onChange={handleRadioButtonChange}
-                                >
-                                    <FormControlLabel
-                                        className="label"
-                                        value="sort[0]=price"
-                                        control={<Radio />}
-                                        label={textContent().price_asc}
-                                    />
-                                    <FormControlLabel
-                                        className="label"
-                                        value="sort[0]=price%3Adesc"
-                                        control={<Radio />}
-                                        label={textContent().price_dec}
-                                    />
-                                    <FormControlLabel
-                                        className="label"
-                                        value="sort[0]=is_new%3Adesc"
-                                        control={<Radio />}
-                                        label={textContent().new}
-                                    />
-                                    <FormControlLabel
-                                        className="label"
-                                        value="sort[0]=is_new"
-                                        control={<Radio />}
-                                        label={textContent().old}
-                                    />
-                                    <FormControlLabel
-                                        className="label"
-                                        value="sort[0]=is_discount%3Adesc"
-                                        control={<Radio />}
-                                        label={textContent().discount}
-                                    />
-                                    <FormControlLabel
-                                        className="label"
-                                        value="sort[0]=is_discount"
-                                        control={<Radio />}
-                                        label={textContent().regular}
-                                    />
-                                </RadioGroup>
-                            </FormControl>
+                        <div className="filterItem">
+                            <h1>{textContent().sorting}</h1>
+                            <div className="sorting">
+                                <FormControl>
+                                    <RadioGroup
+                                        aria-labelledby="demo-radio-buttons-group-label"
+                                        value={radioButtons}
+                                        name="radio-buttons-group"
+                                        onChange={handleRadioButtonChange}
+                                    >
+                                        <FormControlLabel
+                                            className="label"
+                                            value="sort[0]=price"
+                                            control={<Radio />}
+                                            label={textContent().price_asc}
+                                        />
+                                        <FormControlLabel
+                                            className="label"
+                                            value="sort[0]=price%3Adesc"
+                                            control={<Radio />}
+                                            label={textContent().price_dec}
+                                        />
+                                        <FormControlLabel
+                                            className="label"
+                                            value="sort[0]=is_new%3Adesc"
+                                            control={<Radio />}
+                                            label={textContent().new}
+                                        />
+                                        <FormControlLabel
+                                            className="label"
+                                            value="sort[0]=is_new"
+                                            control={<Radio />}
+                                            label={textContent().old}
+                                        />
+                                        <FormControlLabel
+                                            className="label"
+                                            value="sort[0]=is_discount%3Adesc"
+                                            control={<Radio />}
+                                            label={textContent().discount}
+                                        />
+                                        <FormControlLabel
+                                            className="label"
+                                            value="sort[0]=is_discount"
+                                            control={<Radio />}
+                                            label={textContent().regular}
+                                        />
+                                    </RadioGroup>
+                                </FormControl>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -176,6 +180,9 @@ const Products = ({search}) => {
                     />
                 </div>
                 <List checkBoxes={checkBoxes} radioButtons={radioButtons} search = {search} />
+            </div>
+            <div className="filter-btn-wrapper" onClick={() => setFiltersOpen(true)}>
+                <button>{textContent().filters}</button>
             </div>
         </div>
     );
