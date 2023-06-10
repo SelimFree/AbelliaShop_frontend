@@ -13,7 +13,6 @@ const Product = () => {
     const [data, loading, error] = useFetch(`/products/${param}?populate=*`, true);
     const dispatch = useDispatch();
     const product = data[0];
-    console.log(data);
     const [state] = useGlobalState();
     const [currentImage, setCurrentImage] = useState(0);
     const [quantity, setQuantity] = useState(1);
@@ -108,7 +107,7 @@ const Product = () => {
                                 onClick={() => {
                                     dispatch(
                                         addToCart({
-                                            id: data?.id,
+                                            id: product?.id,
                                             title_eng:
                                             product?.attributes?.title_eng,
                                             title_rus:

@@ -55,6 +55,7 @@ const Checkout = () => {
             }
         } catch (err) {
             console.log(err);
+            setRequestStatus(500);
         }
     };
 
