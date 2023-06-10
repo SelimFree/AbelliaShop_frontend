@@ -79,7 +79,7 @@ const Checkout = () => {
             }
         }
         if (activeStep >= steps.length - 1) {
-            if (products.length == 0) {
+            if (products.length == 0 && requestStatus == 0) {
                 toast.error(emptyCartToast)
                 setInterval(() => {
                     navigator("/");
