@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, Outlet, Navigate } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
@@ -7,7 +7,6 @@ import Product from "./pages/Product/Product";
 import Checkout from "./pages/Checkout/Checkout";
 import "./app.scss";
 import { createContext, useReducer, useState } from "react";
-import { useSelector } from "react-redux";
 
 const Layout = ({setSearch}) => {
     
@@ -44,7 +43,6 @@ const GlobalStateProvider = ({ children }) => {
 
 function App() {
     const [search, setSearch] = useState("");
-    const products = useSelector(state => state.products);
 
     const router = createBrowserRouter([
         {
@@ -69,7 +67,7 @@ function App() {
                 },
                 {
                     path: "/checkout",
-                    element: (products.length ? <Checkout/> : <Navigate to={"/"}/>),
+                    element: <Checkout/>,
                 },
             ],
         },

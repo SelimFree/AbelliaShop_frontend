@@ -27,11 +27,26 @@
         height: 400px;
         display: flex;
 
+        @media (max-width: 768px) {
+            width: 300px;
+        }
+
         img {
             width: 50%;
             height: 100%;
             object-fit: cover;
+
+            @media (max-width: 768px) {
+                width: 100%;
+            }
         }
+
+        .secondImg {
+            @media (max-width: 768px) {
+                display: none;
+            } 
+        }
+
 
     }
 

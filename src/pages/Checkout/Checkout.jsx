@@ -49,8 +49,8 @@ const Checkout = () => {
                 products,
                 lang: state.lang,
             });
-            setRequestStatus(res.status);
             if (res?.data?.orderCreated) {
+                setRequestStatus(res.status);
                 dispatch(resetCart());
             }
         } catch (err) {
