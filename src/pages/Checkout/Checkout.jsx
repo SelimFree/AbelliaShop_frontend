@@ -102,7 +102,7 @@ const Checkout = () => {
 
     return !requestStatus ? (
         <div className="checkout">
-            <Box sx={{ width: "100%" }}>
+            <Box className="stepper" sx={{ width: "100%" }}>
                 <Stepper activeStep={activeStep}>
                     {steps.map((label) => {
                         const stepProps = {};
