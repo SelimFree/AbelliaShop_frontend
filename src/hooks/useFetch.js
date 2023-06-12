@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { makeRequest } from "../makeRequest";
-const useFetch = (url, selectOne) => {
+const useFetch = (url, selectOne=false) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -12,7 +12,7 @@ const useFetch = (url, selectOne) => {
                 if (selectOne) {
                     setData([...data, res.data.data]);
                 } else {
-                    setData([...data, ...res.data.data]);
+                    setData([...res.data.data]);
                 }
             } catch (error) {
                 setError(true);
@@ -23,6 +23,7 @@ const useFetch = (url, selectOne) => {
     }, [url]);
 
     return [ data, loading, error];
+
 };
 
 export default useFetch;

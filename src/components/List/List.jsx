@@ -2,17 +2,15 @@ import "./List.scss";
 import Card from "../Card/Card";
 import textContent from "./TextContent";
 import useFetch from "../../hooks/useFetch";
-import { useState } from "react";
 import useGlobalState from "../../hooks/useGlobalState";
 import Loader from "../Card/Loader";
 
-const List = ({ checkBoxes, radioButtons, search }) => {
+const List = ({ checkBoxes, radioButtons, search}) => {
     const [state] = useGlobalState();
-    const pageSize = 25;
-    const [page, setPage] = useState(1);
+    const pageSize = 500;
     const generateUrl = () => {
         let url =
-            `/products?pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=*` +
+            `/products?pagination[page]=1&pagination[pageSize]=${pageSize}&populate=*` +
             (checkBoxes.length ? `&${checkBoxes.join("&")}` : "") +
             (radioButtons ? `&${radioButtons}` : "") +
             (search
@@ -26,12 +24,9 @@ const List = ({ checkBoxes, radioButtons, search }) => {
                 : "");
         return url;
     };
-    const url = generateUrl()
-    const [data, loading, error] = useFetch(url);
-    const showMore = () => {
-        setPage(page + 1);
-    };
 
+    let url = generateUrl()
+    const [data, loading, error] = useFetch(url);
     return (
         <div className="list">
             <div className="items Loader">
@@ -50,9 +45,9 @@ const List = ({ checkBoxes, radioButtons, search }) => {
                     </>
                 )}
             </div>
-            <div className="add" onClick={showMore}>
+            {/* <div className="add" onClick={showMore}>
                 {textContent().more}
-            </div>
+            </div> */}
         </div>
     );
 };

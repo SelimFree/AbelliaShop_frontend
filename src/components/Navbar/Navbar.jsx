@@ -22,6 +22,7 @@ const Navbar = ({setSearch}) => {
 
     const handleSearch = (event) => {
         event.preventDefault();
+        setBurgerOpen(false);
         const userInput = event.target.firstElementChild.value;
         event.target.firstElementChild.value = "";
         setSearch(userInput);
@@ -122,9 +123,9 @@ const Navbar = ({setSearch}) => {
                 <div className={"burger-container" + (burgerOpen ? " burger-opened" : "")}>
                     <div className="burger-wrapper">
                         <div className="top">
-                            <div className="search">
+                            <form className="search" onSubmit={handleSearch}>
                                 <input type="text" className="search__input" id="name" placeholder="Products..." />
-                            </div>
+                            </form>
                             <CloseOutlinedIcon className="close-btn" onClick={() => setBurgerOpen(false)}/>
                         </div>
                         <div className="elements" onClick={() => setBurgerOpen(false)}>

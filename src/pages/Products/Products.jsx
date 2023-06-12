@@ -179,7 +179,7 @@ const Products = ({search}) => {
                         alt=""
                     />
                 </div>
-                <List checkBoxes={checkBoxes} radioButtons={radioButtons} search = {search} />
+                <List checkBoxes={checkBoxes} radioButtons={radioButtons} search = {search}/>
             </div>
             <div className="filter-btn-wrapper" onClick={() => setFiltersOpen(true)}>
                 <button>{textContent().filters}</button>

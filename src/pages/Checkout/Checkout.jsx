@@ -93,7 +93,6 @@ const Checkout = () => {
 
     const handleBack = () => {
         if (activeStep > steps.length - 1) {
-            console.log("Cant go back!");
             return;
         } else {
             setActiveStep((prevActiveStep) => prevActiveStep - 1);
